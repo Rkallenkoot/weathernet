@@ -22,6 +22,10 @@ p{
   margin-bottom: 10px;
 }
 
+.floatr{
+  float: right;
+}
+
  #main{
   margin-top: 0px;
  }
@@ -76,6 +80,11 @@ p{
   margin: 0;
   border-bottom: 1px solid #eee;
   width: 100%;
+}
+
+/*** FOOTER ****/
+.footer-logo{
+  display: inline-block;
 }
 
 
