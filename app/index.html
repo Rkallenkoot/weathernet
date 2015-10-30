@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>weathernet</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="weathernet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!-- build:css(.) styles/vendor.css -->
+	<link rel="stylesheet" href="styles/material.css" />
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/styles.css">
+	<!-- endbuild -->
+
+</head>
+<body ng-app="weathernetApp">
+	<div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout">
+		<header class="mdl-layout__header">
+			<div class="mdl-layout__header-row mdl-color--grey-100 mdl-color-text--grey-800" style="height: 80px;">
+				<!-- Title -->
+				<span class="mdl-layout-title"><img src="images/mgu.png" alt="MGU"  style="width: 50px;"/><br /></span>
+				<div class="mdl-layout-spacer"></div>
+				<img src="images/avatar.png" alt="Avatar" style="height: 40px; display: inline-block; border-radius: 80px; margin: 10px;" /> V. V. Putin
+
+				<button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+					<i class="material-icons">arrow_drop_down</i>
+				</button>
+				<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+					<li class="mdl-menu__item">Some Action</li>
+					<li class="mdl-menu__item">Another Action</li>
+					<li disabled class="mdl-menu__item">Disabled Action</li>
+					<li class="mdl-menu__item">Yet Another Action</li>
+				</ul>
+			</div>
+			<!-- Tabs -->
+			<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+				<a href="#/moscow" class="mdl-layout__tab mdl-js-no-tab-panel is-active">Moscow</a>
+				<a href="#/peakTemperatures" class="mdl-layout__tab mdl-js-no-tab-panel">Top 10 peak temperatures</a>
+				<a href="#/rainfall" id="rainfall-world-btn" class="mdl-layout__tab mdl-js-no-tab-panel">Rainfall</a>
+			</div>
+		</header>
+
+		<main id="main" class="demo-main mdl-layout__content">
+
+		<div ng-view></div>
+
+			<footer class="demo-footer mdl-mini-footer">
+				<div class="mdl-mini-footer--left-section">
+					<ul class="mdl-mini-footer--link-list">
+						<li><a href="#">Help</a></li>
+						<li><a href="#">Privacy and Terms</a></li>
+						<li><a href="#">User Agreement</a></li>
+					</ul>
+				</div>
+			</footer>
+		</main>
+
+	</div>
+
+	<!-- build:js(.) scripts/vendor.js -->
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angular-touch/angular-touch.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUqUI7UekwprMCzWGvXuB3FznXNqTfLKk&callback=initMap" async defer></script>
+
+	<!-- build:js({.tmp,app}) scripts/scripts.js -->
+	<script src="scripts/material.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers/main.js"></script>
+	<script src="scripts/controllers/moscow.js"></script>
+	<script src="scripts/controllers/peaktemperatures.js"></script>
+	<script src="scripts/controllers/rainfall.js"></script>
+	<!-- endbuild -->
+
+</body>
+</html>
