@@ -4,7 +4,14 @@
 			<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
 				<div class="mdl-grid">
 					<div class="mdl-cell mdl-cell--9-col">
-					<div id="map"></div>
+
+					<div id="map_canvas">
+					<ui-gmap-google-map center="map.center" zoom="map.zoom">
+					<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
+				</ui-gmap-circle>
+					</ui-gmap-google-map>
+					</div>
+
 					</div>
 					<div class="mdl-cell mdl-cell--3-col  mdl-color-text--grey-800">
 						<h2 style="margin: 0; padding: 0;">Station</h2>

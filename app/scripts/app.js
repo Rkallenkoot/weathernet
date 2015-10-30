@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'uiGmapgoogle-maps'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -42,4 +43,10 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .config(
+  	['uiGmapGoogleMapApiProvider', function(GoogleMapApiProvider){
+  		GoogleMapApiProvider.configure({
+  			key: 'AIzaSyCUqUI7UekwprMCzWGvXuB3FznXNqTfLKk'
+  		});
+  	}]);

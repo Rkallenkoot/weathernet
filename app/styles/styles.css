@@ -87,3 +87,9 @@ body{
 }
 
 
+/**
+ * angular google maps
+ */
+.angular-google-map-container { height: 400px; }
+
+
