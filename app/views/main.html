@@ -1,3 +1,4 @@
+<div ng-controller="MoscowCtrl">
 <section class="mdl-layout__tab-panel is-active">
 		<div class="demo-container mdl-grid">
 			<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
@@ -7,6 +8,7 @@
 
 					<div id="map_canvas">
 					<ui-gmap-google-map center="map.center" zoom="map.zoom">
+					<ui-gmap-markers models="weerstations" idKey="idKey" coords="'self'"></ui-gmap-markers>
 					<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
 				</ui-gmap-circle>
 					</ui-gmap-google-map>
@@ -26,3 +28,4 @@
 			</div>
 		</div>
 	</section>
+</div>
