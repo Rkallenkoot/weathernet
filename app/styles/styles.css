@@ -18,6 +18,9 @@ body{
   background-color: rgba(28, 39, 28, 0.25);
 }
 
+p{
+  margin-bottom: 10px;
+}
 
  #main{
   margin-top: 0px;
@@ -50,10 +53,6 @@ body{
   padding: 40px 28px;
 }
 
-.demo-content h3 {
-  margin-top: 48px;
-}
-
 .demo-footer {
   padding-left: 40px;
 }
@@ -77,13 +76,6 @@ body{
   margin: 0;
   border-bottom: 1px solid #eee;
   width: 100%;
-}
-
-
-.mdl-layout__tab-bar {
-  height: auto;
-  width: 100%;
-  background-color: #03963d;
 }
 
 
