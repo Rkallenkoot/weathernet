@@ -1,0 +1,35 @@
+<section class="mdl-layout__tab-panel is-active">
+	<div class="demo-container mdl-grid">
+		<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--9-col">
+
+					<div id="map_canvas">
+						<ui-gmap-google-map center="map.center" zoom="map.zoom">
+						<ui-gmap-markers models="weerstations" chunk="'500'" idKey="idKey" coords="'self'">
+<!--
+NIET DOEN MET 8000 WEATHERSTATIONS!!!!!! erg traag in gebruik :D
+<ui-gmap-windows show="windowOptions.visible">
+							<div ng-non-bindable>{{title}}</div>
+					</ui-gmap-windows>
+ -->				</ui-gmap-markers>
+				<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
+			</ui-gmap-circle>
+		</ui-gmap-google-map>
+	</div>
+
+</div>
+<div class="mdl-cell mdl-cell--3-col  mdl-color-text--grey-800">
+	<h2 style="margin: 0; padding: 0;">Station</h2>
+	<ul id="stationlist">
+		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
+		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
+		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
+		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
+	</ul>
+</div>
+</div>
+</div>
+</div>
+</section>

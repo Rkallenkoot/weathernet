@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var weathernetApp = angular
   .module('weathernetApp', [
     'ngAnimate',
     'ngCookies',
@@ -16,9 +16,13 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'uiGmapgoogle-maps'
-  ])
-  .config(function ($routeProvider) {
+    'uiGmapgoogle-maps',
+    'SessionService',
+    'AuthenticationService'
+  ]);
+
+
+weathernetApp.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -26,7 +30,7 @@ angular
         controllerAs: 'main'
       })
       .when('/moscow', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/moscow.html',
         controller: 'MoscowCtrl',
         controllerAs: 'moscow'
       })
@@ -40,13 +44,33 @@ angular
       	controller: 'RainfallCtrl',
       	controllerAs: 'rainfall'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  })
-  .config(
+  });
+
+weathernetApp.config(
   	['uiGmapGoogleMapApiProvider', function(GoogleMapApiProvider){
   		GoogleMapApiProvider.configure({
   			key: 'AIzaSyCUqUI7UekwprMCzWGvXuB3FznXNqTfLKk'
   		});
   	}]);
+
+weathernetApp.config(
+  ['$httpProvider', function($httpProvider){
+    $httpProvider.defaults.withCredentials = true;
+}]);
+
+
+weathernetApp.run(function($rootScope, $location, AuthenticationService) {
+  $rootScope.$on('$routeChangeStart', function(){
+    if(!AuthenticationService.isLoggedIn()){
+      $location.path('/login');
+    }
+  });
+});
