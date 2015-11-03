@@ -49,6 +49,12 @@ weathernetApp.config(function ($routeProvider) {
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .when('/logout', {
+        // Do we need a logout view?
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl',
+        controllerAs: 'logout'
+      })
       .otherwise({
         redirectTo: '/'
       });
