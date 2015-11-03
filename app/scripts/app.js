@@ -17,6 +17,7 @@
   'ngSanitize',
   'ngTouch',
   'uiGmapgoogle-maps',
+  'googlechart',
   'SessionService',
   'AuthenticationService'
   ]);
