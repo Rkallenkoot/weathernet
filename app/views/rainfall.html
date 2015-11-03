@@ -1,29 +1,25 @@
+<div ng-controller="RainfallCtrl">
 <section class="mdl-layout__tab-panel is-active">
 	<div class="demo-container mdl-grid">
 		<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
-			<h3>Rainfall</h3>
+			<h3 class="floatl">Rainfall</h3>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect floatr trigger" ng-click="show=!show"><i class="material-icons">pin_drop</i></button>
+			<div style="clear: both;" />
 			<p>Get the rainfall from any weaterstation in the world.</p>
-			<table class="mdl-data-table mdl-js-data-table">
-				<thead>
-					<tr>
-						<th class="mdl-data-table__cell--non-numeric">Stationnumber</th>
-						<th class="mdl-data-table__cell--non-numeric">Stationname</th>
-						<th class="mdl-data-table__cell--non-numeric">Country</th>
-						<th class="mdl-data-table__cell--non-numeric">Temperature</th>
-						<th class="mdl-data-table__cell--non-numeric">Datetime</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="mdl-data-table__cell--non-numeric">12345</td>
-						<td class="mdl-data-table__cell--non-numeric">Charkov</td>
-						<td class="mdl-data-table__cell--non-numeric">Ukrain (Russia)</td>
-						<td class="mdl-data-table__cell--non-numeric">15&deg;C</td>
-						<td class="mdl-data-table__cell--non-numeric">10-10-2015 16:17:32</td>
-					</tr>
-				</tbody>
-			</table>
+			<hr />
+			<div ng-hide="show">
+			Country: <select><option>Russia</option></select> | Station: <select><option>1234 | Moscow</option></select>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Update</button>
+			</div>
+			
+			<div ng-hide="!show">
+				<h1>HIER MOET FF EEN MAPPIE</h1>
+			</div> 
+
+			<hr />
+			<div google-chart chart="chartObject"></div>
 		</div>
 	</div>
 </section>
+</div>

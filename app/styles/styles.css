@@ -26,6 +26,10 @@ p{
   float: right;
 }
 
+.floatl{
+  float: left;
+}
+
  #main{
   margin-top: 0px;
  }
