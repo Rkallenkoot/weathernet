@@ -7,8 +7,10 @@
  * # LoginCtrl
  * Controller of the weathernetApp
  */
-angular.module('weathernetApp')
-  .controller('LoginCtrl', function ($scope, $location, AuthenticationService) {
+ angular.module('weathernetApp')
+ .controller('LoginCtrl', function ($window, $scope, $location, AuthenticationService) {
+
+  $window.componentHandler.upgradeDom();
 
   $scope.credentials = {
     email: '',

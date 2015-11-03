@@ -7,29 +7,23 @@
 
 					<div id="map_canvas">
 						<ui-gmap-google-map center="map.center" zoom="map.zoom">
-						<ui-gmap-markers models="weerstations" chunk="'500'" idKey="idKey" coords="'self'">
-<!--
-NIET DOEN MET 8000 WEATHERSTATIONS!!!!!! erg traag in gebruik :D
-<ui-gmap-windows show="windowOptions.visible">
-							<div ng-non-bindable>{{title}}</div>
+						<ui-gmap-markers models="weerstations" chunk="'500'" idKey="'stn'" coords="'self'">
+						<ui-gmap-windows show="windowOptions.visible">
+						<div ng-non-bindable><b>{{ stn }}</b><br> {{ title }}, {{country}}<br>Lat: {{ latitude }}<br>Long: {{ longitude }} </div>
 					</ui-gmap-windows>
- -->				</ui-gmap-markers>
+				</ui-gmap-markers>
 				<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
-			</ui-gmap-circle>
-		</ui-gmap-google-map>
+			</ui-gmap-google-map>
+		</div>
 	</div>
 
-</div>
-<div class="mdl-cell mdl-cell--3-col  mdl-color-text--grey-800">
-	<h2 style="margin: 0; padding: 0;">Station</h2>
-	<ul id="stationlist">
-		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
-		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
-		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
-		<li><i class="material-icons">location_on</i> 1192 - Moscow</li>
-	</ul>
-</div>
-</div>
+	<div class="mdl-cell mdl-cell--3-col  mdl-color-text--grey-800">
+		<h2 style="margin: 0; padding: 0;">Station</h2>
+			<ul id="stationlist">
+				<li ng-repeat="ws in weerstations"><i class="material-icons">location_on</i> {{ ws.stn }} - {{ ws.title }}</li>
+			</ul>
+		</div>
+	</div>
 </div>
 </div>
 </section>

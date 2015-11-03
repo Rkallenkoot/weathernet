@@ -16,7 +16,7 @@
     },
     zoom: 6
   };
-  $scope.weerstations = apiService.getStations();
+  $scope.weerstations = [];
 
   $scope.circle = {
     id: 1,
@@ -52,7 +52,9 @@
 
   uiGmapGoogleMapApi.then(function(){
     if($scope.weerstations.length === 0){
-      $scope.weerstations = apiService.getStations();
+      apiService.getMoscowStations().success(function(data){
+        $scope.weerstations = data;
+      });
     }
   });
 });

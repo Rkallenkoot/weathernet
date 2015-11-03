@@ -9,18 +9,9 @@
  */
 angular.module('weathernetApp')
   .factory('apiService', function ($http) {
-    // Service logic
-    // ...
     var stations = [];
-
-    var meaningOfLife = 42;
-
     // Public API here
     return {
-      someMethod: function () {
-        return meaningOfLife;
-      },
-
       getStations: function(){
         if(stations.length > 0){
           return stations;
@@ -28,9 +19,21 @@ angular.module('weathernetApp')
           $http.get('http://localhost:8000/station/all')
           .success(function(data){
             stations = data;
+            return stations;
           });
           return stations;
         }
+      },
+
+      getMoscowStations: function(){
+        var moscow = $http.get('http://localhost:8000/moscow/all');
+        return moscow;
+      },
+
+      getMoscowTemp: function() {
+        var moscowTemp = $http.get('http://localhost:8000/moscow/temp');
+        return moscowTemp;
       }
+
     };
   });

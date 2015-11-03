@@ -5,7 +5,7 @@
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--9-col">
 					<form ng-controller="LoginCtrl">
-						<div class="mdl-textfield mdl-js-textfield">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input ng-model="credentials.email" class="mdl-textfield__input" type="text" id="email" />
 							<label class="mdl-textfield__label" for="email">Email</label>
 						</div>
@@ -15,8 +15,7 @@
 							<label class="mdl-textfield__label" for="password">Password</label>
 						</div>
 						<!-- Accent-colored raised button with ripple -->
-						<button ng-click="login()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-							Button
+						<button ng-click="login()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Button
 						</button>
 					</form>
 
