@@ -8,76 +8,77 @@
  * Controller of the weathernetApp
  */
 
- angular.module('weathernetApp').controller("RainfallCtrl", function ($scope) {
- 	$scope.title = "dikke pik!";
+ angular.module('weathernetApp')
+ .controller('RainfallCtrl', function ($scope) {
+ 	$scope.title = 'dikke pik!';
  	$scope.chartObject = {
- 		"type": "LineChart",
- 		"displayed": true,
- 		"data": {
- 			"cols": [
+ 		'type': 'LineChart',
+ 		'displayed': true,
+ 		'data': {
+ 			'cols': [
  			{
- 				"id": "month",
- 				"label": "Month",
- 				"type": "string",
- 				"p": {}
+ 				'id': 'month',
+ 				'label': 'Month',
+ 				'type': 'string',
+ 				'p': {}
  			},
- 			
+
  			{
- 				"id": "desktop-id",
- 				"label": "Rainfall (mm)",
- 				"type": "number",
- 				"p": {}
+ 				'id': 'desktop-id',
+ 				'label': 'Rainfall (mm)',
+ 				'type': 'number',
+ 				'p': {}
  			}
  			],
- 			"rows": [
+ 			'rows': [
  			{
- 				"c": [
+ 				'c': [
  				{
- 					"v": "January"
+ 					'v': 'January'
  				},
  				{
- 					"v": 19
+ 					'v': 19
  				}
  				]
  			},
  			{
- 				"c": [
+ 				'c': [
  				{
- 					"v": "February"
+ 					'v': 'February'
  				},
  				{
- 					"v": 13
+ 					'v': 13
  				}
  				]
  			},
  			{
- 				"c": [
+ 				'c': [
  				{
- 					"v": "March"
+ 					'v': 'March'
  				},
  				{
- 					"v": 24
+ 					'v': 24
  				}
  				]
  			}
  			]
  		},
- 		"options": {
- 			"title": "Rainfall for stn",
- 			"isStacked": "true",
- 			"fill": 20,
- 			"displayExactValues": true,
- 			"vAxis": {
- 				"title": "Rainfall in mm",
- 				"gridlines": {
- 					"count": 10
+ 		'options': {
+ 			'title': 'Rainfall for stn',
+ 			'isStacked': 'true',
+ 			'fill': 20,
+ 			'displayExactValues': true,
+ 			'vAxis': {
+ 				'title': 'Rainfall in mm',
+ 				'gridlines': {
+ 					'count': 10
  				}
  			},
- 			"hAxis": {
- 				"title": "Date"
+ 			'hAxis': {
+ 				'title': 'Date'
  			}
  		},
- 		"formatters": {}
- 	}
+ 		'formatters': {}
+ 	};
 
  });

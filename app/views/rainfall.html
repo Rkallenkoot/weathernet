@@ -1,4 +1,4 @@
-<div ng-controller="RainfallCtrl">
+<div ng-controller="RainfallCtrl as rainfall">
 <section class="mdl-layout__tab-panel is-active">
 	<div class="demo-container mdl-grid">
 		<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
@@ -12,10 +12,10 @@
 			Country: <select><option>Russia</option></select> | Station: <select><option>1234 | Moscow</option></select>
 			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Update</button>
 			</div>
-			
+
 			<div ng-hide="!show">
 				<h1>HIER MOET FF EEN MAPPIE</h1>
-			</div> 
+			</div>
 
 			<hr />
 			<div google-chart chart="chartObject"></div>
