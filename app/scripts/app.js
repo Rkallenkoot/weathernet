@@ -8,38 +8,75 @@
  *
  * Main module of the application.
  */
-angular
-  .module('weathernetApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+ var weathernetApp = angular
+ .module('weathernetApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch',
+  'uiGmapgoogle-maps',
+  'SessionService',
+  'AuthenticationService'
+  ]);
+
+
+ weathernetApp.config(function ($routeProvider) {
+  $routeProvider
+  .when('/', {
+    templateUrl: 'views/main.html',
+    controller: 'MainCtrl',
+    controllerAs: 'main'
+  })
+  .when('/moscow', {
+    templateUrl: 'views/moscow.html',
+    controller: 'MoscowCtrl',
+    controllerAs: 'moscow'
+  })
+  .when('/peakTemperatures', {
+   templateUrl: 'views/peaktemperatures.html',
+   controller: 'PeaktemperaturesCtrl',
+   controllerAs: 'peakTemperatures'
+ })
+  .when('/rainfall', {
+   templateUrl: 'views/rainfall.html',
+   controller: 'RainfallCtrl',
+   controllerAs: 'rainfall'
+ })
+  .when('/login', {
+    templateUrl: 'views/login.html',
+    controller: 'LoginCtrl',
+    controllerAs: 'login'
+  })
+  .when('/logout', {
+        // Do we need a logout view?
+        templateUrl: 'views/logout.html',
+        controller: 'LogoutCtrl',
+        controllerAs: 'logout'
       })
-      .when('/moscow', {
-        templateUrl: 'views/main.html',
-        controller: 'MoscowCtrl',
-        controllerAs: 'moscow'
-      })
-      .when('/peakTemperatures', {
-      	templateUrl: 'views/peaktemperatures.html',
-      	controller: 'PeaktemperaturesCtrl',
-      	controllerAs: 'peakTemperatures'
-      })
-      .when('/rainfall', {
-      	templateUrl: 'views/rainfall.html',
-      	controller: 'RainfallCtrl',
-      	controllerAs: 'rainfall'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .otherwise({
+    redirectTo: '/'
   });
+});
+
+ weathernetApp.config(
+   ['uiGmapGoogleMapApiProvider', function(GoogleMapApiProvider){
+    GoogleMapApiProvider.configure({
+     key: 'AIzaSyCUqUI7UekwprMCzWGvXuB3FznXNqTfLKk'
+   });
+  }]);
+
+ weathernetApp.config(
+  ['$httpProvider', function($httpProvider){
+    $httpProvider.defaults.withCredentials = true;
+  }]);
+
+
+ weathernetApp.run(function($rootScope, $location, AuthenticationService) {
+  $rootScope.$on('$routeChangeStart', function(){
+    if(!AuthenticationService.isLoggedIn()){
+      $location.path('/login');
+    }
+  });
+});
