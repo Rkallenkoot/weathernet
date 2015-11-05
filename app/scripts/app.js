@@ -17,9 +17,9 @@
   'ngSanitize',
   'ngTouch',
   'uiGmapgoogle-maps',
-  'googlechart',
   'SessionService',
-  'AuthenticationService'
+  'AuthenticationService',
+  'chart.js'
   ]);
 
 
@@ -44,6 +44,7 @@
   })
   .when('/logout', {
     // Do we need a logout view?
+    templateUrl: 'views/logout.html',
     controller: 'LogoutCtrl',
     controllerAs: 'logout'
   })
@@ -62,6 +63,17 @@
  weathernetApp.config(
   ['$httpProvider', function($httpProvider){
     $httpProvider.defaults.withCredentials = true;
+  }]);
+
+ weathernetApp.config(['ChartJsProvider', function (ChartJsProvider) {
+    // Configure all charts
+    ChartJsProvider.setOptions({
+      colours: ['#FF5252', '#FF8A80']
+    });
+    // Configure all line charts
+    ChartJsProvider.setOptions('Line', {
+      datasetFill: false
+    });
   }]);
 
 
