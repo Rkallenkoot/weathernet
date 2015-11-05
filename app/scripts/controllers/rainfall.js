@@ -66,7 +66,6 @@
     }
     // set the previous marker so we know which one to reset;
     previousMarker = marker;
-    console.log(marker.key);
     $scope.getRainfall(marker.key);
     $scope.getStationInfo(marker.key);
     marker.setIcon(pinImage);
