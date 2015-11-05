@@ -16,6 +16,10 @@ angular.module('weathernetApp')
         return $http.get('http://localhost:8000/station/all');
       },
 
+      getStation: function(stn){
+        return $http.get('http://localhost:8000/station/' + $sanitize(stn));
+      },
+
       getMoscowStations: function(){
         var moscow = $http.get('http://localhost:8000/moscow/all');
         return moscow;
@@ -29,6 +33,11 @@ angular.module('weathernetApp')
       getTop10: function(){
         var top10 = $http.get('http://localhost:8000/top10');
         return top10;
+      },
+
+      getRainfall: function(stn){
+        var rainfall = $http.get('http://localhost:8000/rainfall/' + $sanitize(stn));
+        return rainfall;
       }
 
     };
