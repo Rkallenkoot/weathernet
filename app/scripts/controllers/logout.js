@@ -17,5 +17,5 @@ angular.module('weathernetApp')
     // instantly logout when controller is invoked
     $scope.logout();
     // Redirect to homepage
-    $location.path('/');
+    $location.path('/login');
   });

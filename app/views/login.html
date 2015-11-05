@@ -1,26 +1,25 @@
 <section class="mdl-layout__tab-panel is-active">
 	<div class="demo-container mdl-grid">
-		<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
-			<div class="mdl-grid">
-				<div class="mdl-cell mdl-cell--9-col">
-					<form ng-controller="LoginCtrl">
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input ng-model="credentials.email" class="mdl-textfield__input" type="text" id="email" />
-							<label class="mdl-textfield__label" for="email">Email</label>
-						</div>
+		<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--4-col mdl-cell-12-col-tablet mdl-cell--12-col-phone">
 
-						<div class="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
-							<input ng-model="credentials.password" class="mdl-textfield__input mdl-textfield--floating-label" type="password" id="password" />
-							<label class="mdl-textfield__label" for="password">Password</label>
-						</div>
-						<!-- Accent-colored raised button with ripple -->
-						<button ng-click="login()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Button
-						</button>
-					</form>
-
+			<form ng-submit="login()" ng-controller="LoginCtrl">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<input ng-model="credentials.email" class="mdl-textfield__input" type="text" id="email" />
+					<label class="mdl-textfield__label" for="email">Email</label>
 				</div>
-			</div>
+
+				<div class="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
+					<input ng-model="credentials.password" class="mdl-textfield__input mdl-textfield--floating-label" type="password" id="password" />
+					<label class="mdl-textfield__label" for="password">Password</label>
+				</div>
+				<div>
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Login
+				</button>
+				</div>
+			</form>
+
 		</div>
+		<div class="mdl-cell mdl-cell--4-col-mdl-cell-hide-tablet mdl-cell-hide-phone"></div>
 	</div>
 </section>
