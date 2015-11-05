@@ -7,7 +7,8 @@ version 0.14.0.
 
 Voordat je kan beginnen heb je node.js nodig met npm nodig. Npm moet in je path staat.
 
-vervolgens: `npm install -g grunt-cli` .
+vervolgens: `npm install -g grunt-cli bower` . Bower heb je nodig om libraries te installeren, deze packages worden tijdens `grunt --force` toegevoegd aan de index.html.
+
 
 In projectroot doe je `npm install && bower install`, hiermee install je de dependencies van de applicatie.
 
