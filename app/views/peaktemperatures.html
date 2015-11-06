@@ -35,9 +35,12 @@
 						</tbody>
 					</table>
 
-					<div>
+					<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--6-col">
 						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="getPeakTemperatures()"> Refresh data</button>
-						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="getExport()"> Export data</button>
+						</div>
+						<div class="mdl-cell mdl-cell--6-col">
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="getExport()"> Download as CSV</button>
 					</div>
 
 				</div>
