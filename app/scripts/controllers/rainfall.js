@@ -9,7 +9,7 @@
  */
 
  angular.module('weathernetApp')
- .controller('RainfallCtrl', function ($scope, $window, $compile, uiGmapGoogleMapApi, apiService) {
+ .controller('RainfallCtrl', function ($scope, $timeout, $window, $compile, uiGmapGoogleMapApi, apiService) {
 
   $window.componentHandler.upgradeDom();
   $scope.maps = {};
@@ -30,6 +30,16 @@
     },
     zoom: 6,
     control: {}
+  };
+
+  $scope.getExport = function(){
+    if($scope.stationInfo.stn > 0){
+      return apiService.getRainfallExport($scope.stationInfo.stn);
+    }
+    $scope.error = 'No station selected, please select a station.';
+    $timeout(function(){
+      $scope.error = '';
+    }, 3000);
   };
 
   // window information

@@ -8,7 +8,7 @@
  * Factory in the weathernetApp.
  */
 angular.module('weathernetApp')
-  .factory('apiService', function ($sanitize, $http) {
+  .factory('apiService', function ($sanitize, $window, $http) {
 
     // Public API here
     return {
@@ -30,6 +30,10 @@ angular.module('weathernetApp')
         return moscowTemp;
       },
 
+      getMoscowTempExport: function(temp){
+        return $window.open('http://localhost:8000/moscow/temp/' + $sanitize(temp) + '?export=true', '__target');
+      },
+
       getTop10: function(){
         var top10 = $http.get('http://localhost:8000/top10');
         return top10;
@@ -38,7 +42,17 @@ angular.module('weathernetApp')
       getRainfall: function(stn){
         var rainfall = $http.get('http://localhost:8000/rainfall/' + $sanitize(stn));
         return rainfall;
+      },
+
+      getRainfallExport: function(stn){
+        return $window.open('http://localhost:8000/rainfall/' + $sanitize(stn)+'?export=true', '__target');
+      },
+
+      getTop10Export: function(){
+        var exportQuery = $window.open('http://localhost:8000/top10?export=true', '__target');
+        return exportQuery;
       }
+
 
     };
   });

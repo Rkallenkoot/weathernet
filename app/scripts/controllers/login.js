@@ -11,7 +11,7 @@
  .controller('LoginCtrl', function ($window, $scope, $location, AuthenticationService, SessionService) {
 
   $window.componentHandler.upgradeDom();
-
+  $scope.loading = false;
   $scope.credentials = {
     email: '',
     password: ''
@@ -23,12 +23,15 @@
   };
 
   $scope.login = function (){
+    $scope.loading = true;
     AuthenticationService.login($scope.credentials)
     .success(function(){
+      $scope.loading = false;
       $location.path('/moscow');
       console.log('Authentication successful');
     })
     .error(function(){
+      $scope.loading = false;
       console.log('Error Authenticating');
     });
   };

@@ -34,6 +34,10 @@
     }
   };
 
+  $scope.getExport = function(){
+    return apiService.getMoscowTempExport($scope.temp);
+  };
+
   $scope.circle = {
     id: 1,
     center: {

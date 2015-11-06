@@ -3,7 +3,10 @@
 		<div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--4-col mdl-cell-12-col-tablet mdl-cell--12-col-phone">
 
+			<div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" ng-show="loading"></div>
+
 			<form ng-submit="login()" ng-controller="LoginCtrl">
+
 				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 					<input ng-model="credentials.email" class="mdl-textfield__input" type="text" id="email" />
 					<label class="mdl-textfield__label" for="email">Email</label>
@@ -18,6 +21,7 @@
 				</button>
 				</div>
 			</form>
+
 
 		</div>
 		<div class="mdl-cell mdl-cell--4-col-mdl-cell-hide-tablet mdl-cell-hide-phone"></div>

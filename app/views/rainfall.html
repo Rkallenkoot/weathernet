@@ -52,9 +52,14 @@
 						</tr>
 					</tbody>
 				</table>
+				<br>
+
+
+				<button ng-click="getExport()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Download as CSV </button>
 
 			</div>
 			<div class="demo-content mdl-color--white mdl-shadow--4dp mdl-color-text--grey-1200 mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet">
+			<h2 class="mdl-color-text--grey-600" ng-bind="error"></h2>
 				<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series"></canvas>
 			</div>
 
