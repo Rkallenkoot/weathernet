@@ -31,7 +31,7 @@ angular.module('weathernetApp')
       },
 
       getMoscowTempExport: function(temp){
-        return $window.open('http://localhost:8000/moscow/temp/' + $sanitize(temp) + '?export=true', '__target');
+        return 'http://localhost:8000/moscow/temp/' + $sanitize(temp) + '?export=true';
       },
 
       getTop10: function(){
@@ -45,11 +45,11 @@ angular.module('weathernetApp')
       },
 
       getRainfallExport: function(stn){
-        return $window.open('http://localhost:8000/rainfall/' + $sanitize(stn)+'?export=true', '__target');
+        return 'http://localhost:8000/rainfall/' + $sanitize(stn)+'?export=true';
       },
 
       getTop10Export: function(){
-        var exportQuery = $window.open('http://localhost:8000/top10?export=true', '__target');
+        var exportQuery = 'http://localhost:8000/top10?export=true';
         return exportQuery;
       }
 

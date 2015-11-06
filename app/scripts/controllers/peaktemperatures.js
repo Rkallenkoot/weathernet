@@ -19,7 +19,7 @@ angular.module('weathernetApp')
     };
 
     $scope.getExport = function(){
-      return apiService.getTop10Export();
+      return $window.open(apiService.getTop10Export(), '__target');
     };
 
     $scope.getPeakTemperatures = function(){

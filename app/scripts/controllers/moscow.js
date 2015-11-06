@@ -35,7 +35,7 @@
   };
 
   $scope.getExport = function(){
-    return apiService.getMoscowTempExport($scope.temp);
+    $window.open(apiService.getMoscowTempExport($scope.temp), '__target');
   };
 
   $scope.circle = {

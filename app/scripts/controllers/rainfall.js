@@ -34,12 +34,12 @@
 
   $scope.getExport = function(){
     if($scope.stationInfo.stn > 0){
-      return apiService.getRainfallExport($scope.stationInfo.stn);
+      return $window.open(apiService.getRainfallExport($scope.stationInfo.stn), '__target');
     }
-    $scope.error = 'No station selected, please select a station.';
+    $scope.error = 'No station selected, please click on a station.';
     $timeout(function(){
       $scope.error = '';
-    }, 3000);
+    }, 4000);
   };
 
   // window information
