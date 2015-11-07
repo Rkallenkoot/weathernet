@@ -12,9 +12,10 @@
 					<label class="mdl-textfield__label" for="email">Email</label>
 				</div>
 
-				<div class="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label">
+				<div class="mdl-textfield mdl-js-textfield  mdl-textfield--floating-label" ng-class="error ? 'is-invalid is-dirty' : ''">
 					<input ng-model="credentials.password" class="mdl-textfield__input mdl-textfield--floating-label" type="password" id="password" />
 					<label class="mdl-textfield__label" for="password">Password</label>
+					<span class="mdl-textfield__error" ng-bind="error"></span>
 				</div>
 				<div>
 				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Login
