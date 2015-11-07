@@ -17,7 +17,11 @@
       latitude: 55.7522222,
       longitude: 37.6155556
     },
-    zoom: 6
+    zoom: 6,
+    options: {
+      minZoom: 6,
+      maxZoom: 6
+    }
   };
 
   $scope.weerstations = [];
@@ -27,11 +31,11 @@
   $scope.labels = [];
   $scope.series = [];
 
+  var tmpLabels = [];
+  var tmpData = [];
+
   $scope.options = {
-      labelsFilter: function(label){
-        console.log('swag: ' + label);
-        return label % 5 !== 0;
-    }
+    animationSteps: 10
   };
 
   $scope.getExport = function(){
@@ -71,46 +75,56 @@
   };
 
   $scope.updateChartInfo = function(){
-    console.log("Updating chart");
-    var bami = [];
-    var arr = [];
-    $scope.labels = [];
+    // function used to reduce the amount of data shown on chart
+    var mod = 0;
+    var len = tmpLabels.length;
+    var lbls = [];
+    var tmpArr = [];
+    if(len > 10){
+      mod = (len >> len.toString().length) / 2;
 
-    for(var i = 0; i < $scope.moscowData.length; i++){
-      // als de key nog niet bestaat, maken we nieuwe array aan
-      if(typeof bami[$scope.moscowData[i].stn] === 'undefined') {
-        bami[$scope.moscowData[i].stn] = [];
-      }
-      bami[$scope.moscowData[i].stn].push($scope.moscowData[i].temp);
-      if(!$scope.labels.indexOf($scope.moscowData[i].date + '_' + $scope.moscowData[i].time) > -1){
-        console.log('asd');
-        $scope.labels.push($scope.moscowData[i].date + '_' + $scope.moscowData[i].time);
+      for(var i = 0; i < len; i++){
+        if(i % mod === 0){
+          lbls.push(tmpLabels[i]);
+          for(var s =0; s < tmpData.length;s++){
+            if(typeof tmpArr[s] === 'undefined'){
+              tmpArr[s] = [];
+            }
+            tmpArr[s].push(tmpData[s][i]);
+          }
+        }
       }
     }
-
-    $scope.data = [];
-    $scope.series = [];
-    for(var k in bami){
-      $scope.series.push(k);
-      var tmp = bami[k];
-      var tmpData = [];
-      for(var a = 0; a < tmp.length; a++){
-        tmpData.push(tmp[a]);
-      }
-      $scope.data.push(tmpData);
-    }
-    console.log($scope.data);
+    $scope.labels = lbls;
+    $scope.data = tmpArr;
   };
 
   $scope.refreshMoscowTemp = function(){
     if($scope.temp == null || $scope.temp.length < 1){
-      $scope.moscowData = [];
+      tmpLabels = [];
+      tmpData = [];
+      $scope.series = [];
       return;
     }
+    $scope.loading = true;
     $scope.moscowData = apiService.getMoscowTemp($scope.temp).then(function(data){
-      $scope.moscowData = data.data;
-      $scope.updateChartInfo();
+      $scope.loading = false;
+      if(data.data.series.length === 0){
+        tmpLabels = [];
+        tmpData = [];
+      } else {
+
+      // heard you like data
+      $scope.series = data.data.series;
+      tmpLabels = data.data.labels
+      tmpData = [];
+      for(var key in data.data.data){
+        tmpData.push(data.data.data[key]);
+      }
+    }
+    $scope.updateChartInfo();
     }, function(err){
+      $scope.loading = false;
       // logout when 401
       $location.path('/logout');
     });

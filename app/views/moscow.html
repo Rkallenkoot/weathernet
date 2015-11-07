@@ -4,16 +4,19 @@
 		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--9-col">
-
-					<div id="map_canvas">
-						<ui-gmap-google-map center="map.center" zoom="map.zoom">
-						<ui-gmap-markers models="weerstations" chunk="'500'" idKey="'stn'" coords="'self'">
-						<ui-gmap-windows show="windowOptions.visible">
-						<div ng-non-bindable><b>{{ stn }}</b><br> {{ title }}, {{country}}<br>Lat: {{ latitude }}<br>Long: {{ longitude }} </div>
-					</ui-gmap-windows>
-				</ui-gmap-markers>
-				<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
-			</ui-gmap-google-map>
+				{{ loading }}
+					<div>
+						<div id="map_canvas">
+							<ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+							<ui-gmap-markers models="weerstations" chunk="'500'" idKey="'stn'" coords="'self'">
+							<ui-gmap-windows show="windowOptions.visible">
+							<div ng-non-bindable><b>{{ stn }}</b><br> {{ title }}, {{country}}<br>Lat: {{ latitude }}<br>Long: {{ longitude }} </div>
+						</ui-gmap-windows>
+					</ui-gmap-markers>
+					<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
+				</ui-gmap-google-map>
+			</div>
+			<div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%" ng-show="loading"></div>
 		</div>
 	</div>
 
@@ -38,10 +41,7 @@
 	</div>
 	<div class="mdl-grid">
 		<div class="mdl-cell--12-col">
-			<canvas id="line" class="chart chart-line" chart-data="data"
-			chart-labels="labels" chart-legend="true" chart-series="series" chart-options="options">
-		</canvas>
-
+			<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="options"></canvas>
 		</div>
 	</div>
 </div>
