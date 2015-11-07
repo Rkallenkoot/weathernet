@@ -8,7 +8,7 @@
  * Controller of the weathernetApp
  */
 angular.module('weathernetApp')
-  .controller('PeaktemperaturesCtrl', function ($scope, $window, apiService) {
+  .controller('PeaktemperaturesCtrl', function ($scope, $location, $window, apiService) {
 
     $scope.chartData = [];
     $scope.labels = [];
@@ -19,7 +19,7 @@ angular.module('weathernetApp')
     };
 
     $scope.getExport = function(){
-      return $window.open(apiService.getTop10Export(), '__target');
+      $window.open(apiService.getTop10Export(), '__target');
     };
 
     $scope.getPeakTemperatures = function(){
@@ -38,6 +38,7 @@ angular.module('weathernetApp')
         $scope.data.push(tmpData);
       }, function(err){
         console.log("Err: " + err);
+        $location.path('/logout');
       });
     };
 

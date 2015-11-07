@@ -133,6 +133,7 @@
     }, function(err){
       console.log(err);
       $scope.loading = false;
+      $location.path('/logout');
     });
   };
 
