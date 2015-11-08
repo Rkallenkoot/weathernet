@@ -26,7 +26,10 @@ angular.module('weathernetApp')
       },
 
       getMoscowTemp: function(temp) {
-        var moscowTemp = $http.get('http://localhost:8000/moscow/temp/' + $sanitize(temp));
+        var conf = {
+          timeout: 15000
+        };
+        var moscowTemp = $http.get('http://localhost:8000/moscow/temp/' + $sanitize(temp), conf);
         return moscowTemp;
       },
 

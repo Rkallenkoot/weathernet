@@ -4,7 +4,6 @@
 		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--9-col">
-				{{ loading }}
 					<div>
 						<div id="map_canvas">
 							<ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
@@ -30,10 +29,10 @@
 
 	<div class="mdl-grid">
 		<div class="mdl-cell--12-col">
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused" ng-class="error ? 'is-invalid is-error' : ''">
 				<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="temp" ng-model="temp" ng-model-options="{ debounce: { 'default': 500, 'blur': 0 }}" ng-change="refreshMoscowTemp()">
 				<label class="mdl-textfield__label" for="temp">Temperatuur in Celsius</label>
-				<span class="mdl-textfield__error">Input is not a number!</span>
+				<span class="mdl-textfield__error" ng-bind="error ? error :'Input is not a number!'"></span>
 			</div>
 				<button ng-click="getExport()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Download as CSV </button>
 

@@ -8,7 +8,7 @@
  * Controller of the weathernetApp
  */
  angular.module('weathernetApp')
- .controller('MoscowCtrl', function ($window, $scope, $location, uiGmapGoogleMapApi, apiService) {
+ .controller('MoscowCtrl', function ($window, $scope, $timeout, $location, uiGmapGoogleMapApi, apiService) {
 
   $window.componentHandler.upgradeDom();
   $scope.temp = 10;
@@ -126,7 +126,14 @@
     }, function(err){
       $scope.loading = false;
       // logout when 401
-      $location.path('/logout');
+      console.log(err);
+      if(err.status !== -1){
+        $location.path('/logout');
+      }
+      $scope.error = "Request taking too long";
+      $timeout(function(){
+        $scope.error = '';
+      }, 4000);
     });
     console.log('refreshed moscow temp');
   };
