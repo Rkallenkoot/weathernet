@@ -18,7 +18,8 @@
   'ngTouch',
   'uiGmapgoogle-maps',
   'SessionService',
-  'AuthenticationService'
+  'AuthenticationService',
+  'chart.js'
   ]);
 
 
@@ -28,33 +29,25 @@
     templateUrl: 'views/main.html',
     controller: 'MainCtrl',
     controllerAs: 'main'
-  })
+})
   .when('/moscow', {
-    templateUrl: 'views/moscow.html',
-    controller: 'MoscowCtrl',
-    controllerAs: 'moscow'
+    templateUrl: 'views/moscow.html'
   })
   .when('/peakTemperatures', {
-   templateUrl: 'views/peaktemperatures.html',
-   controller: 'PeaktemperaturesCtrl',
-   controllerAs: 'peakTemperatures'
+   templateUrl: 'views/peaktemperatures.html'
  })
   .when('/rainfall', {
-   templateUrl: 'views/rainfall.html',
-   controller: 'RainfallCtrl',
-   controllerAs: 'rainfall'
+   templateUrl: 'views/rainfall.html'
  })
   .when('/login', {
-    templateUrl: 'views/login.html',
-    controller: 'LoginCtrl',
-    controllerAs: 'login'
+    templateUrl: 'views/login.html'
   })
   .when('/logout', {
-        // Do we need a logout view?
-        templateUrl: 'views/logout.html',
-        controller: 'LogoutCtrl',
-        controllerAs: 'logout'
-      })
+    // Do we need a logout view?
+    templateUrl: 'views/logout.html',
+    controller: 'LogoutCtrl',
+    controllerAs: 'logout'
+  })
   .otherwise({
     redirectTo: '/'
   });
@@ -70,6 +63,17 @@
  weathernetApp.config(
   ['$httpProvider', function($httpProvider){
     $httpProvider.defaults.withCredentials = true;
+  }]);
+
+ weathernetApp.config(['ChartJsProvider', function (ChartJsProvider) {
+    // Configure all charts
+    ChartJsProvider.setOptions({
+      colours: ['#FF5252', '#FF8A80']
+    });
+    // Configure all line charts
+    ChartJsProvider.setOptions('Line', {
+      datasetFill: false
+    });
   }]);
 
 

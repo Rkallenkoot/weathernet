@@ -13,33 +13,44 @@
 	<!-- build:css(.) styles/vendor.css -->
 	<link rel="stylesheet" href="styles/material.css" />
 	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css" />
 	<!-- endbower -->
 	<!-- endbuild -->
 
 	<!-- build:css(.tmp) styles/main.css -->
+	<link rel="stylesheet" href="styles/material.css" />
 	<link rel="stylesheet" href="styles/styles.css">
 	<!-- endbuild -->
-	<link rel="icon" type="image/png" href="logo_15px.png">
+	<link rel="icon" type="image/png" href="images/logo_15px.png">
 
 </head>
 <body ng-app="weathernetApp">
 	<div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout">
-		<header class="mdl-layout__header">
+		<header class="mdl-layout__header" ng-controller="LoginCtrl as login">
 			<div class="mdl-layout__header-row mdl-color--grey-100 mdl-color-text--grey-800" style="height: 80px;">
 				<!-- Title -->
 				<a href="#/"><span class="mdl-layout-title"><img src="images/mgu.png" alt="MGU"  style="width: 50px;"/><br /></span></a>
 				<div class="mdl-layout-spacer"></div>
-				<img src="images/avatar.png" alt="Avatar" style="height: 40px; display: inline-block; border-radius: 80px; margin: 10px;" /> V. V. Putin
+
+				<div ng-show="loggedIn()">
+				<img src="images/avatar.png" alt="Avatar" style="height: 40px; display: inline-block; border-radius: 80px; margin: 10px;" />
+				<span ng-bind="firstname | capitalize"></span>
+				<span ng-bind="lastname | capitalize"></span>
 
 				<button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
 					<i class="material-icons">arrow_drop_down</i>
 				</button>
 				<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
-					<li class="mdl-menu__item">Log out</li>
+					<a href="#/logout" style="text-decoration:none;color:rgb(66,66,66)"><li class="mdl-menu__item">Log out</li></a>
 				</ul>
+				</div>
+
+				<div ng-hide="loggedIn()">
+				<a class="mdl-navigation__link mdl-typography--text-uppercase" style="color: rgb(66,66,66);" href="#/login"> Login</a>
+				</div>
 			</div>
 			<!-- Tabs -->
-			<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+			<div class="mdl-layout__tab-bar mdl-js-ripple-effect" ng-show="loggedIn()">
 				<a href="#/moscow" class="mdl-layout__tab mdl-js-no-tab-panel">Moscow</a>
 				<a href="#/peakTemperatures" class="mdl-layout__tab mdl-js-no-tab-panel">Top 10 peak temperatures</a>
 				<a href="#/rainfall" id="rainfall-world-btn" class="mdl-layout__tab mdl-js-no-tab-panel">Rainfall</a>
@@ -61,6 +72,7 @@
 
 	</div>
 
+
 	<!-- build:js(.) scripts/vendor.js -->
 	<!-- bower:js -->
 	<script src="bower_components/angular/angular.js"></script>
@@ -74,10 +86,10 @@
 	<script src="bower_components/lodash/lodash.js"></script>
 	<script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
 	<script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+	<script src="bower_components/Chart.js/Chart.js"></script>
+	<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
-
-
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/material.js"></script>
@@ -91,6 +103,7 @@
 	<script src="scripts/services/authenticationservice.js"></script>
 	<script src="scripts/services/sessionservice.js"></script>
 	<script src="scripts/controllers/logout.js"></script>
+	<script src="scripts/filters/capitalize.js"></script>
 	<!-- endbuild -->
 
 </body>

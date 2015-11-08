@@ -1,29 +1,55 @@
-<section class="mdl-layout__tab-panel is-active">
+<section class="mdl-layout__tab-panel is-active" ng-controller="PeaktemperaturesCtrl as peakTemperatures">
 	<div class="demo-container mdl-grid">
-		<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
 			<h3>Peak temperatures</h3>
-			<p>This table shows all peak temperatures in Russia. (&ge; 15&deg;C).</p>
-			<table class="mdl-data-table mdl-js-data-table">
-				<thead>
-					<tr>
-						<th class="mdl-data-table__cell--non-numeric">Stationnumber</th>
-						<th class="mdl-data-table__cell--non-numeric">Stationname</th>
-						<th class="mdl-data-table__cell--non-numeric">Country</th>
-						<th class="mdl-data-table__cell--non-numeric">Temperature</th>
-						<th class="mdl-data-table__cell--non-numeric">Datetime</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="mdl-data-table__cell--non-numeric">12345</td>
-						<td class="mdl-data-table__cell--non-numeric">Charkov</td>
-						<td class="mdl-data-table__cell--non-numeric">Ukrain (Russia)</td>
-						<td class="mdl-data-table__cell--non-numeric">15&deg;C</td>
-						<td class="mdl-data-table__cell--non-numeric">10-10-2015 16:17:32</td>
-					</tr>
-				</tbody>
-			</table>
+
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+				<div class="mdl-cel mdl-cell--8-col">
+					<p>Top 10 countries with the highest temperatures.(&deg;C).</p>
+					<canvas id="bar" class="chart chart-bar" chart-series="series" chart-labels="labels" chart-data="data" chart-options="options" chart-colours="['#03963d']"></canvas>
+				</div>
+				<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+
+			</div>
+
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+				<div class="mdl-cell mdl-cell--8-col">
+					<table class="mdl-data-table mdl-js-data-table">
+						<thead>
+							<tr>
+								<th class="mdl-data-table__cell--non-numeric">Stationname</th>
+								<th class="mdl-data-table__cell--non-numeric">Country</th>
+								<th class="mdl-data-table__cell--non-numeric">Temperature</th>
+								<th class="mdl-data-table__cell--non-numeric">Datetime</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="d in chartData">
+								<td class="mdl-data-table__cell--non-numeric">{{d.name}}</td>
+								<td class="mdl-data-table__cell--non-numeric">{{d.country}}</td>
+								<td class="mdl-data-table__cell--non-numeric">{{d.temp}}&deg;C</td>
+								<td class="mdl-data-table__cell--non-numeric">{{d.date + ' ' +  d.time | date}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--6-col">
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="getPeakTemperatures()"> Refresh data</button>
+						</div>
+						<div class="mdl-cell mdl-cell--6-col">
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="getExport()"> Download as CSV</button>
+					</div>
+
+				</div>
+				<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+			</div>
+
 		</div>
+
 	</div>
+
+
 </section>
