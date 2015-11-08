@@ -16,7 +16,7 @@ angular.module('weathernetApp')
         if(stations.length > 0){
           return stations;
         } else {
-          $http.get('http://localhost:8000/station/all')
+          $http.get('http://api.unwdmi.nl:82/station/all')
           .success(function(data){
             stations = data;
             return stations;
@@ -26,12 +26,12 @@ angular.module('weathernetApp')
       },
 
       getMoscowStations: function(){
-        var moscow = $http.get('http://localhost:8000/moscow/all');
+        var moscow = $http.get('http://api.unwdmi.nl:82/moscow/all');
         return moscow;
       },
 
       getMoscowTemp: function() {
-        var moscowTemp = $http.get('http://localhost:8000/moscow/temp');
+        var moscowTemp = $http.get('http://api.unwdmi.nl:82/moscow/temp');
         return moscowTemp;
       }
 

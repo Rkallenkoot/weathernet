@@ -27,12 +27,12 @@ angular.module('AuthenticationService', ['SessionService'])
 
   return {
     login: function(credentials) {
-      var login = $http.post('http://localhost:8000/login', sanitizeCredentials(credentials));
+      var login = $http.post('http://api.unwdmi.nl:82/login', sanitizeCredentials(credentials));
       login.success(cacheSession);
       return login;
     },
     logout: function() {
-      var logout = $http.get('http://localhost:8000/logout');
+      var logout = $http.get('http://api.unwdmi.nl:82/logout');
       logout.success(uncacheSession);
       return logout;
     },
