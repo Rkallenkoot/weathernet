@@ -8,14 +8,16 @@
  * Factory in the weathernetApp.
  */
 angular.module('AuthenticationService', ['SessionService'])
-  .factory('AuthenticationService', function($http, $sanitize, SessionService) {
+  .factory('AuthenticationService', function($window, $http, $sanitize, SessionService) {
 
+    $window.componentHandler.upgradeDom();
   var cacheSession = function() {
     SessionService.set('authenticated', true);
   };
 
   var uncacheSession = function() {
     SessionService.unset('authenticated');
+    SessionService.unset('user');
   };
 
   var sanitizeCredentials = function(credentials) {
@@ -25,10 +27,17 @@ angular.module('AuthenticationService', ['SessionService'])
     };
   };
 
+  var cacheUserInfo = function(info){
+    SessionService.set('user', info);
+  };
+
   return {
     login: function(credentials) {
       var login = $http.post('http://api.unwdmi.nl:82/login', sanitizeCredentials(credentials));
-      login.success(cacheSession);
+      login.success(function(data){
+        cacheUserInfo(data.data);
+        cacheSession();
+      });
       return login;
     },
     logout: function() {
@@ -38,6 +47,9 @@ angular.module('AuthenticationService', ['SessionService'])
     },
     isLoggedIn: function() {
       return SessionService.get('authenticated');
+    },
+    getUserInfo: function(){
+      return SessionService.get('user');
     }
   };
   });

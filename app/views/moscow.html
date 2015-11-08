@@ -4,24 +4,43 @@
 		<div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-1200 mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--9-col">
-
-					<div id="map_canvas">
-						<ui-gmap-google-map center="map.center" zoom="map.zoom">
-						<ui-gmap-markers models="weerstations" chunk="'500'" idKey="'stn'" coords="'self'">
-						<ui-gmap-windows show="windowOptions.visible">
-						<div ng-non-bindable><b>{{ stn }}</b><br> {{ title }}, {{country}}<br>Lat: {{ latitude }}<br>Long: {{ longitude }} </div>
-					</ui-gmap-windows>
-				</ui-gmap-markers>
-				<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
-			</ui-gmap-google-map>
+					<div>
+						<div id="map_canvas">
+							<ui-gmap-google-map center="map.center" zoom="map.zoom" options="map.options">
+							<ui-gmap-markers models="weerstations" chunk="'500'" idKey="'stn'" coords="'self'">
+							<ui-gmap-windows show="windowOptions.visible">
+							<div ng-non-bindable><b>{{ stn }}</b><br> {{ title }}, {{country}}<br>Lat: {{ latitude }}<br>Long: {{ longitude }} </div>
+						</ui-gmap-windows>
+					</ui-gmap-markers>
+					<ui-gmap-circle center="circle.center" stroke="circle.stroke" fill="circle.fill" radius="circle.radius"></ui-gmap-circle>
+				</ui-gmap-google-map>
+			</div>
+			<div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="width: 100%" ng-show="loading"></div>
 		</div>
 	</div>
 
-	<div class="mdl-cell mdl-cell--3-col  mdl-color-text--grey-800">
+	<div class="mdl-cell mdl-cell--3-col  mdl-color-text--grey-800" style="max-height:400px; overflow-y:scroll">
 		<h2 style="margin: 0; padding: 0;">Station</h2>
 			<ul id="stationlist">
 				<li ng-repeat="ws in weerstations"><i class="material-icons">location_on</i> {{ ws.stn }} - {{ ws.title }}</li>
 			</ul>
+		</div>
+	</div>
+
+	<div class="mdl-grid">
+		<div class="mdl-cell--12-col">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused" ng-class="error ? 'is-invalid is-error' : ''">
+				<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="temp" ng-model="temp" ng-model-options="{ debounce: { 'default': 500, 'blur': 0 }}" ng-change="refreshMoscowTemp()">
+				<label class="mdl-textfield__label" for="temp">Temperatuur in Celsius</label>
+				<span class="mdl-textfield__error" ng-bind="error ? error :'Input is not a number!'"></span>
+			</div>
+				<button ng-click="getExport()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Download as CSV </button>
+
+		</div>
+	</div>
+	<div class="mdl-grid">
+		<div class="mdl-cell--12-col">
+			<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="options"></canvas>
 		</div>
 	</div>
 </div>
