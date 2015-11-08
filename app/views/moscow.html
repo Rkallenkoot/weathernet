@@ -31,7 +31,7 @@
 		<div class="mdl-cell--12-col">
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-focused" ng-class="error ? 'is-invalid is-error' : ''">
 				<input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="temp" ng-model="temp" ng-model-options="{ debounce: { 'default': 500, 'blur': 0 }}" ng-change="refreshMoscowTemp()">
-				<label class="mdl-textfield__label" for="temp">Temperatuur in Celsius</label>
+				<label class="mdl-textfield__label" for="temp">Temperature in Celsius</label>
 				<span class="mdl-textfield__error" ng-bind="error ? error :'Input is not a number!'"></span>
 			</div>
 				<button ng-click="getExport()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"> Download as CSV </button>
