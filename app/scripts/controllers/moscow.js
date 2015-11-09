@@ -94,6 +94,12 @@
           }
         }
       }
+    } else {
+      $scope.dataError = 'No data to show with current temperature of ' + $scope.temp + '°C';
+      tmpArr = tmpData;
+      $timeout(function(){
+        $scope.dataError = '';
+      },4000);
     }
     $scope.labels = lbls;
     $scope.data = tmpArr;
@@ -104,23 +110,24 @@
       tmpLabels = [];
       tmpData = [];
       $scope.series = [];
+      $scope.updateChartInfo();
       return;
     }
     $scope.loading = true;
     $scope.moscowData = apiService.getMoscowTemp($scope.temp).then(function(data){
       $scope.loading = false;
       if(data.data.series.length === 0){
-        tmpLabels = [];
-        tmpData = [];
-      } else {
-
-      // heard you like data
-      $scope.series = data.data.series;
-      tmpLabels = data.data.labels
-      tmpData = [];
-      for(var key in data.data.data){
-        tmpData.push(data.data.data[key]);
+        tmpLabels = [''];
+        tmpData = [0];
       }
+      else {
+        // heard you like data
+        $scope.series = data.data.series;
+        tmpLabels = data.data.labels
+        tmpData = [];
+        for(var key in data.data.data){
+          tmpData.push(data.data.data[key]);
+        }
     }
     $scope.updateChartInfo();
     }, function(err){
@@ -137,6 +144,7 @@
     });
     console.log('refreshed moscow temp');
   };
+
   $scope.refreshMoscowTemp();
 
 

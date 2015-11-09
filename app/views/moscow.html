@@ -40,6 +40,7 @@
 	</div>
 	<div class="mdl-grid">
 		<div class="mdl-cell--12-col">
+			<h3 class="mdl-color-text--grey-600" ng-bind="dataError" ng-show="dataError"></h3>
 			<canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-options="options"></canvas>
 		</div>
 	</div>
