@@ -31,7 +31,7 @@ angular.module('weathernetApp')
         var tmpLabels = [];
         $scope.chartData = data.data;
         for(var i = 0; i < $scope.chartData.length; i++){
-          tmpLabels.push($scope.chartData[i].name);
+          tmpLabels.push($scope.chartData[i].country);
           tmpData.push($scope.chartData[i].temp);
         }
         $scope.labels = tmpLabels;

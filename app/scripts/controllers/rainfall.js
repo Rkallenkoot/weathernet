@@ -9,7 +9,7 @@
  */
 
  angular.module('weathernetApp')
- .controller('RainfallCtrl', function ($scope, $timeout, $window, $compile, uiGmapGoogleMapApi, apiService) {
+ .controller('RainfallCtrl', function ($scope, $timeout, $location, $window, $compile, uiGmapGoogleMapApi, apiService) {
 
   $window.componentHandler.upgradeDom();
   $scope.maps = {};
