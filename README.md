@@ -22,8 +22,8 @@ Running `grunt test` will run the unit tests with karma.
 
 ## Copyright
 
-Roelof Kallenkoot
-Rutger Roffel
-Iris Meijer
-Patrick Swijgman
-Amar Tursic
+- Roelof Kallenkoot
+- Rutger Roffel
+- Iris Meijer
+- Patrick Swijgman
+- Amar Tursic
