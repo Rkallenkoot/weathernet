@@ -19,3 +19,11 @@ Voor het gemak kun je ook `grunt --force` gebruiken, grunt zal dan niet stoppen 
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+## Copyright
+
+Roelof Kallenkoot
+Rutger Roffel
+Iris Meijer
+Patrick Swijgman
+Amar Tursic
